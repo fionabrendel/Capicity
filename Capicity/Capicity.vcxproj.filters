@@ -13,10 +13,54 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Headerdateien\Material">
+      <UniqueIdentifier>{e26ba455-172d-495b-b67b-d985c15a38fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Material">
+      <UniqueIdentifier>{a00f1a43-efd9-413c-915c-2bc482841393}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Capicity.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="CapicitySim.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Building.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Holz.cpp">
+      <Filter>Quelldateien\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="Kunststoff.cpp">
+      <Filter>Quelldateien\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Quelldateien\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="Metall.cpp">
+      <Filter>Quelldateien\Material</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CapicitySim.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Headerdateien\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Holz.h">
+      <Filter>Headerdateien\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Metall.h">
+      <Filter>Headerdateien\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Kunststoff.h">
+      <Filter>Headerdateien\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Building.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

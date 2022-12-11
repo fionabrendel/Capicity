@@ -3,6 +3,8 @@
 
 class Kunststoff : public Material
 {
+public:
 	Kunststoff();
+	~Kunststoff();
 };
 

@@ -14,9 +14,16 @@ class CapicitySim
 		enum gebaeudetype { empty, TYP1, TYP2, TYP3 };
 		gebaeudetype** bereich;
 
+		//neu mit Building:
+
+
 		//Konstruktor:
 		CapicitySim();
 		CapicitySim(int bbreite, int bhoehe);
+
+		//Destruktor
+		~CapicitySim();
+
 		//Methoden
 		bool checkKollision(int posx, int posy, int breite, int hoehe);
 		void placeBuilding();

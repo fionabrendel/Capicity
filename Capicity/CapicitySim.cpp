@@ -1,11 +1,30 @@
 #include "CapicitySim.h"
+#include "Building.h"
 #include <iostream>
 using namespace std;
 
 
 //Konstruktor
 CapicitySim::CapicitySim() {
+    bbreite = 10;
+    bhoehe = 10;
+    running = true;
+    //bis jetzt bloﬂ kopiert:
+    bereich = new gebaeudetype * [bhoehe];
+    for (int i = 0; i < bhoehe; i++)
+    {
+        bereich[i] = new gebaeudetype[bbreite];
+    }
 
+    for (int i = 0; i < bhoehe; i++) {
+        for (int j = 0; j < bbreite; j++) {
+            bereich[i][j] = gebaeudetype(0);
+        }
+    }
+    while (running)
+    {
+        showMenu();
+    }
 }
 
 CapicitySim::CapicitySim(int bbreite, int bhoehe) {
@@ -13,7 +32,7 @@ CapicitySim::CapicitySim(int bbreite, int bhoehe) {
 	running = true;
 	this->bbreite = bbreite;
 	this->bhoehe = bhoehe;
-	//bis jetzt bloﬂ kopiert:
+
 	bereich = new gebaeudetype * [bhoehe];
 	for (int i = 0; i < bhoehe; i++)
 	{
@@ -120,8 +139,9 @@ void CapicitySim::deleteArea() {
     }
 }
 
-//gibt den Bauplan aus
+//gibt den Bauplan und weitere Informationen aus
 void CapicitySim::printPlan() {
+    //Plan ausgeben
     for (int i = 0; i < bbreite; i++)
     {
         for (int j = 0; j < bhoehe; j++)
@@ -130,6 +150,21 @@ void CapicitySim::printPlan() {
         }
         cout << endl;
     }
+
+    //Auflistung Geb‰ude + Zusammensetzung + Grundpreis
+    //Wasserkraftwerk:
+    Wasserkraftwerk w1;
+    cout << "Wasserkraftwerk: " << endl;
+    cout << w1.toString() << endl;
+    //Windkraftwerk
+    Windkraftwerk w2;
+    cout << "Windkraftwerk: " << endl;
+    cout << w2.toString() << endl;
+    //Solarpanele
+    Solarpanele s3;
+    cout << "Solarpanele: " << endl;
+    cout << s3.toString() << endl;
+    //Gesamtpreis aller Geb‰ude
 }
 
 //beendet das Programm

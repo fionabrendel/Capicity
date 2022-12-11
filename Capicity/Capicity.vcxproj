@@ -128,12 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Building.cpp" />
-    <ClCompile Include="Capicity.cpp" />
     <ClCompile Include="CapicitySim.cpp" />
     <ClCompile Include="Holz.cpp" />
     <ClCompile Include="Kunststoff.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Metall.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Building.h" />

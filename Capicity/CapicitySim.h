@@ -1,6 +1,9 @@
 #pragma once
-class CapicitySim
-{
+#include "Building.h"
+
+namespace Sim {
+	class CapicitySim
+	{
 	public:
 		//Variablen
 		bool running;
@@ -11,11 +14,6 @@ class CapicitySim
 		int posy;
 		int breite;
 		int hoehe;
-		enum gebaeudetype { empty, TYP1, TYP2, TYP3 };
-		gebaeudetype** bereich;
-
-		//neu mit Building:
-
 
 		//Konstruktor:
 		CapicitySim();
@@ -31,5 +29,9 @@ class CapicitySim
 		void printPlan();
 		void stop();
 		void showMenu();
-};
+
+	private:
+		Building ***bereich;
+	};
+}
 

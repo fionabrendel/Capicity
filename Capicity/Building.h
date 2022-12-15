@@ -9,7 +9,6 @@ public:
 	//Variablen
 	int grundpreis;
 	char label; //soll bei Ausdrucken des Plans abgebildet werden
-	//Material** zusammensetzung; //zeigt auf Feld mit Materialien
 	vector<Material> zusammensetzung;
 
 	//Konstruktoren
@@ -20,12 +19,19 @@ public:
 	
 	//Methoden
 	char getLabel();
-	Material getZusammensetzung();
+	string getZusammensetzung();
 	int getGrundpreis();
 	string toString();
 };
 
 //abgeleitete Gebäude
+
+class Leer : public Building {
+public:
+	Leer();
+	~Leer();
+};
+
 class Wasserkraftwerk : public Building {
 public:
 	Wasserkraftwerk();

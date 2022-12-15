@@ -11,9 +11,3 @@ class Material
 		int getPreis();
 		string getName();
 };
-
-class Leer : public Material {
-public:
-	Leer();
-	~Leer();
-};

@@ -23,8 +23,9 @@ char Building::getLabel() {
 string Building::getZusammensetzung() {
 	string temp = "";
 	for (int i = 0; i < zusammensetzung.size(); i++) {
-		temp += zusammensetzung.at(i).getName();
+		temp += zusammensetzung.at(i).getName()+ ' ';
 	}
+	return temp;
 }
 
 int Building::getGrundpreis() {
@@ -32,7 +33,14 @@ int Building::getGrundpreis() {
 }
 
 string Building::toString() {
-	return getLabel() + " " + getGrundpreis() + " " + getZusammensetzung();
+	return getLabel() + " " + getGrundpreis() + ' ' + getZusammensetzung();
+}
+
+//class Leer:
+Leer::Leer() {
+	grundpreis = 0;
+	label = 'O';
+	zusammensetzung = {};
 }
 
 //class Wasserkraftwerk:

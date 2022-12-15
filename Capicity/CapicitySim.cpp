@@ -2,23 +2,22 @@
 #include "Building.h"
 #include <iostream>
 using namespace std;
-
+using namespace Sim;
 
 //Konstruktor
 CapicitySim::CapicitySim() {
     bbreite = 10;
     bhoehe = 10;
     running = true;
-    //bis jetzt bloﬂ kopiert:
-    bereich = new gebaeudetype * [bhoehe];
+    bereich = new Building ** [bhoehe];
     for (int i = 0; i < bhoehe; i++)
     {
-        bereich[i] = new gebaeudetype[bbreite];
+        bereich[i] = new Building*[bbreite];
     }
 
     for (int i = 0; i < bhoehe; i++) {
         for (int j = 0; j < bbreite; j++) {
-            bereich[i][j] = gebaeudetype(0);
+            bereich[i][j] = new Leer();
         }
     }
     while (running)
@@ -33,15 +32,15 @@ CapicitySim::CapicitySim(int bbreite, int bhoehe) {
 	this->bbreite = bbreite;
 	this->bhoehe = bhoehe;
 
-	bereich = new gebaeudetype * [bhoehe];
+	bereich = new Building ** [bhoehe];
 	for (int i = 0; i < bhoehe; i++)
 	{
-		bereich[i] = new gebaeudetype[bbreite];
+		bereich[i] = new Building*[bbreite];
 	}
 
 	for (int i = 0; i < bhoehe; i++) {
 		for (int j = 0; j < bbreite; j++) {
-				bereich[i][j] = gebaeudetype(0);
+				bereich[i][j] = new Leer();
 		}
 	}
 	while (running)
@@ -64,27 +63,13 @@ bool CapicitySim::checkKollision(int posx, int posy, int breite, int hoehe) {
 				return false;
 		}
 	}
-
 	return true;
 }
 
 //plaziert ein Geb‰ude im Bereich
 void CapicitySim::placeBuilding() {
-    enum gebaeudetype art;
-    cout << "Welche Art von Gebaeude? 1: Holz, 2: Stein, 3: Sand" << endl;;
-    cin >> input;
-    switch (input)
-    {
-    case 1: 	art = TYP1;
-        break;
-    case 2: 	art = TYP2;
-        break;
-    case 3: 	art = TYP3;
-        break;
-    default:
-        cout << "Ungueltiger Gebaeudetyp" << endl;
-        return;
-    }
+    cout << "Welche Art von Gebaeude? 1: Wasserkraftwerk, 2: Windkraftwerk, 3: Solarpanele" << endl;;
+    cin >> input; //dann steht in input, welcher Geb‰udetyp es sein soll
     cout << "Position x:";
     cin >> posx;
     cout << "Position y:";
@@ -99,12 +84,34 @@ void CapicitySim::placeBuilding() {
     }
     if (checkKollision(hoehe, breite, posx, posy))
     {
-        for (int i = posy; i < posy + hoehe; i++) {
-            for (int j = posx; j < posx + breite; j++) {
-                bereich[i][j] = art;
-            }
+        switch (input)
+        {
+        case 1:
+                for (int i = posy; i < posy + hoehe; i++) {
+                    for (int j = posx; j < posx + breite; j++) {
+                        bereich[i][j] = new Wasserkraftwerk();
+                    }
+                }
+                cout << "Gebaeude wurde plaziert" << endl;
+                break;
+        case 2: for (int i = posy; i < posy + hoehe; i++) {
+                    for (int j = posx; j < posx + breite; j++) {
+                        bereich[i][j] = new Windkraftwerk();
+                    }
+                }
+                cout << "Gebaeude wurde plaziert" << endl;
+                break;
+        case 3: for (int i = posy; i < posy + hoehe; i++) {
+                    for (int j = posx; j < posx + breite; j++) {
+                        bereich[i][j] = new Wasserkraftwerk();
+                    }
+                }
+                cout << "Gebaeude wurde plaziert" << endl;
+                break;
+        default:
+            cout << "Ungueltiger Gebaeudetyp" << endl;
+            return;
         }
-        cout << "Gebaeude wurde plaziert" << endl;
     }
     else {
         cout << "Gebaeude kann nicht plaziert werden" << endl;
@@ -130,7 +137,7 @@ void CapicitySim::deleteArea() {
     if (posx < bbreite && posy < bhoehe && posx + breite < bbreite && posy + hoehe < bhoehe) {
         for (int i = posy; i < posy + hoehe; i++) {
             for (int j = posx; j < posx + breite; j++) {
-                bereich[i][j] = gebaeudetype(0);
+                bereich[i][j] = new Leer();
             }
         }
     }

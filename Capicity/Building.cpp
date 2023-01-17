@@ -9,7 +9,9 @@ using namespace std;
 Building::Building() {
 	//Default: besteht nur aus 1 Holz und Label
 	label = 'B';
-	zusammensetzung = { Holz() , Holz(), Holz()};
+	zusammensetzung[Holz()] = 3;
+	zusammensetzung[Metall()] = 0;
+	zusammensetzung[Kunststoff()] = 0;
 	grundpreis = 30;
 }
 
@@ -29,26 +31,35 @@ int Building::getGrundpreis() {
 Leer::Leer() {
 	grundpreis = 0;
 	label = 'O';
-	zusammensetzung = {};
+	zusammensetzung[Holz()] = 0;
+	zusammensetzung[Metall()] = 0;
+	zusammensetzung[Kunststoff()] = 0;
 }
 
 //class Wasserkraftwerk:
 Wasserkraftwerk::Wasserkraftwerk() {
 	grundpreis = 100;
 	label = 'W';
-	zusammensetzung = { Holz(), Holz(), Metall() };
+	//zusammensetzung = { Holz(), Holz(), Metall();
+	zusammensetzung[Holz()] = 2;
+	zusammensetzung[Metall()] = 1;
+	zusammensetzung[Kunststoff()] = 0;
 }
 
 //class Windkraftwerk:
 Windkraftwerk::Windkraftwerk() {
 	grundpreis = 70;
 	label = 'L';
-	zusammensetzung = { Kunststoff(), Kunststoff(), Metall()};
+	zusammensetzung[Holz()] = 0;
+	zusammensetzung[Metall()] = 1;
+	zusammensetzung[Kunststoff()] = 2;
 }
 
 //class Solarpanele:
 Solarpanele::Solarpanele() {
 	grundpreis = 80;
 	label = 'S';
-	zusammensetzung = { Kunststoff(), Metall() };
+	zusammensetzung[Holz()] = 0;
+	zusammensetzung[Metall()] = 1;
+	zusammensetzung[Kunststoff()] = 1;
 }

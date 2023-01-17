@@ -2,6 +2,8 @@
 #include "Material.h"
 #include <string>
 #include <vector>
+#include <utility>
+#include <map>
 using namespace std;
 
 class Building{
@@ -9,7 +11,9 @@ public:
 	//Variablen
 	int grundpreis;
 	char label; //soll bei Ausdrucken des Plans abgebildet werden
-	vector<Material> zusammensetzung;
+	//vector<Material> zusammensetzung;
+	map <Material, int> zusammensetzung;
+
 
 	//Konstruktoren
 	Building();

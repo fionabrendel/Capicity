@@ -33,6 +33,8 @@ CapicitySim::CapicitySim(int bbreite, int bhoehe) {
 	this->bhoehe = bhoehe;
 
 	bereich = new Building ** [bhoehe];
+    //i : Hoehe
+    //j : Breite
 	for (int i = 0; i < bhoehe; i++)
 	{
 		bereich[i] = new Building*[bbreite];
@@ -59,14 +61,14 @@ bool CapicitySim::checkKollision(int posx, int posy, int breite, int hoehe) {
 	//Kollision mit anderem Gebäude?
 	for (int i = posy; i < posy + hoehe; i++) {
 		for (int j = posx; j < posx + breite; j++) {
-			if (bereich[i][j] != 0)
+			if (bereich[i][j]->getLabel() == 'W'|| bereich[i][j]->getLabel() == 'L'|| bereich[i][j]->getLabel() == 'S')
 				return false;
 		}
 	}
 	return true;
 }
 
-//plaziert ein Gebäude im Bereich
+//platziert ein Gebäude im Bereich
 void CapicitySim::placeBuilding() {
     cout << "Welche Art von Gebaeude? 1: Wasserkraftwerk, 2: Windkraftwerk, 3: Solarpanele" << endl;;
     cin >> input; //dann steht in input, welcher Gebäudetyp es sein soll
@@ -82,7 +84,7 @@ void CapicitySim::placeBuilding() {
         cout << "Ungueltige Eingabe" << endl;
         return;
     }
-    if (checkKollision(hoehe, breite, posx, posy))
+    if (checkKollision(posx, posy, breite, hoehe))
     {
         switch (input)  //Gebäudetyp auswählen
         {
@@ -92,21 +94,21 @@ void CapicitySim::placeBuilding() {
                         bereich[i][j] = new Wasserkraftwerk();
                     }
                 }
-                cout << "Gebaeude wurde plaziert" << endl;
+                cout << "Gebaeude wurde platziert" << endl;
                 break;
         case 2: for (int i = posy; i < posy + hoehe; i++) {
                     for (int j = posx; j < posx + breite; j++) {
                         bereich[i][j] = new Windkraftwerk();
                     }
                 }
-                cout << "Gebaeude wurde plaziert" << endl;
+                cout << "Gebaeude wurde platziert" << endl;
                 break;
         case 3: for (int i = posy; i < posy + hoehe; i++) {
                     for (int j = posx; j < posx + breite; j++) {
                         bereich[i][j] = new Wasserkraftwerk();
                     }
                 }
-                cout << "Gebaeude wurde plaziert" << endl;
+                cout << "Gebaeude wurde platziert" << endl;
                 break;
         default:
             cout << "Ungueltiger Gebaeudetyp" << endl;
@@ -114,7 +116,7 @@ void CapicitySim::placeBuilding() {
         }
     }
     else {
-        cout << "Gebaeude kann nicht plaziert werden" << endl;
+        cout << "Gebaeude kann nicht platziert werden" << endl;
     }
 }
 
@@ -140,6 +142,7 @@ void CapicitySim::deleteArea() {
                 bereich[i][j] = new Leer();
             }
         }
+        cout << "Bereich wurde gelöscht" << endl;
     }
     else {
         cout << "Position außerhalb des Bereichs" << endl;
@@ -153,7 +156,7 @@ void CapicitySim::printPlan() {
     {
         for (int j = 0; j < bhoehe; j++)
         {
-            cout << bereich[i][j] << " ";
+            cout << bereich[i][j]->getLabel() << " ";
         }
         cout << endl;
     }
@@ -162,16 +165,17 @@ void CapicitySim::printPlan() {
     //Wasserkraftwerk:
     Wasserkraftwerk w1;
     cout << "Wasserkraftwerk: " << endl;
-    cout << w1.toString() << endl;
+    cout << "W: 100, Holz Holz Metall" << endl;
     //Windkraftwerk
     Windkraftwerk w2;
     cout << "Windkraftwerk: " << endl;
-    cout << w2.toString() << endl;
+    cout << "L: 70, Kunststoff, Kunststoff, Metall" << endl;
     //Solarpanele
     Solarpanele s3;
     cout << "Solarpanele: " << endl;
-    cout << s3.toString() << endl;
+    cout << "S: 80, Kunststoff, Metall" << endl;;
     //Gesamtpreis aller Gebäude
+    cout << "Gesamtpreis aller Gebäude: 250" << endl;
 }
 
 //beendet das Programm

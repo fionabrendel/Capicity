@@ -16,7 +16,7 @@ public:
 	
 	//Methoden
 	char getLabel();
-	string getZusammensetzung();
+	virtual string getZusammensetzung();
 	int getGrundpreis();
 	string toString();
 };

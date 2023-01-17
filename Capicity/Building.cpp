@@ -18,17 +18,11 @@ char Building::getLabel() {
 }
 
 string Building::getZusammensetzung() {
-	//Hart reinschreiben
-	string temp = "";
-	return temp;
+	return "";
 }
 
 int Building::getGrundpreis() {
 	return grundpreis;
-}
-
-string Building::toString() {
-	return getLabel() + " " + getGrundpreis() + ' ' + getZusammensetzung();
 }
 
 //class Leer:

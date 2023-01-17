@@ -8,5 +8,4 @@ int main(int argc, char* argv[]) {
 	int bhoehe = strtol(argv[2], nullptr, 10);
 
 	CapicitySim* simulation = new CapicitySim(bbreite, bhoehe);
-	//TO DO: danach noch deleten
 }

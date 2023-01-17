@@ -84,7 +84,7 @@ void CapicitySim::placeBuilding() {
     }
     if (checkKollision(hoehe, breite, posx, posy))
     {
-        switch (input)
+        switch (input)  //Gebäudetyp auswählen
         {
         case 1:
                 for (int i = posy; i < posy + hoehe; i++) {

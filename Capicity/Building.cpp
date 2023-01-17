@@ -13,18 +13,13 @@ Building::Building() {
 	grundpreis = 30;
 }
 
-Building::~Building() {
-	//TO DO: alles deleten
-}
 char Building::getLabel() {
 	return label;
 }
 
 string Building::getZusammensetzung() {
+	//Hart reinschreiben
 	string temp = "";
-	for (int i = 0; i < zusammensetzung.size(); i++) {
-		temp += zusammensetzung.at(i).getName()+ ' ';
-	}
 	return temp;
 }
 
@@ -50,10 +45,6 @@ Wasserkraftwerk::Wasserkraftwerk() {
 	zusammensetzung = { Holz(), Holz(), Metall() };
 }
 
-Wasserkraftwerk::~Wasserkraftwerk() {
-	
-}
-
 //class Windkraftwerk:
 Windkraftwerk::Windkraftwerk() {
 	grundpreis = 70;
@@ -61,17 +52,9 @@ Windkraftwerk::Windkraftwerk() {
 	zusammensetzung = { Kunststoff(), Kunststoff(), Metall()};
 }
 
-Windkraftwerk::~Windkraftwerk() {
-
-}
-
 //class Solarpanele:
 Solarpanele::Solarpanele() {
 	grundpreis = 80;
 	label = 'S';
 	zusammensetzung = { Kunststoff(), Metall() };
-}
-
-Solarpanele::~Solarpanele() {
-
 }

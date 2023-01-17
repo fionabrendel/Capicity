@@ -19,8 +19,6 @@ namespace Sim {
 		CapicitySim();
 		CapicitySim(int bbreite, int bhoehe);
 
-		//Destruktor
-		~CapicitySim();
 
 		//Methoden
 		bool checkKollision(int posx, int posy, int breite, int hoehe);

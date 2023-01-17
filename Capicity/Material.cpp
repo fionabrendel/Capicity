@@ -7,7 +7,3 @@ Material::Material() {
 int Material::getPreis() {
 	return preis;
 }
-
-string Material::getName() {
-	return "Material";
-}

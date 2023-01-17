@@ -13,9 +13,6 @@ public:
 
 	//Konstruktoren
 	Building();
-
-	//Destruktor
-	~Building();
 	
 	//Methoden
 	char getLabel();
@@ -29,24 +26,20 @@ public:
 class Leer : public Building {
 public:
 	Leer();
-	~Leer();
 };
 
 class Wasserkraftwerk : public Building {
 public:
 	Wasserkraftwerk();
-	~Wasserkraftwerk();
 };
 
 class Windkraftwerk : public Building {
 public:
 	Windkraftwerk();
-	~Windkraftwerk();
 };
 
 class Solarpanele : public Building {
 public:
 	Solarpanele();
-	~Solarpanele();
 };
 

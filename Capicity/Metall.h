@@ -4,6 +4,5 @@ class Metall : public Material
 {
 public:
 	Metall();
-	~Metall();
 };
 

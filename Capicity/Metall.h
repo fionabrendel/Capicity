@@ -4,5 +4,6 @@ class Metall : public Material
 {
 public:
 	Metall();
+	string toString();
 };
 

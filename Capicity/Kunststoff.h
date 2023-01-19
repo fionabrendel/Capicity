@@ -5,5 +5,6 @@ class Kunststoff : public Material
 {
 public:
 	Kunststoff();
+	string toString();
 };
 

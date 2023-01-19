@@ -7,6 +7,7 @@ using namespace std;
 class Building{
 public:
 	//Variablen
+	int leistung;
 	int grundpreis;
 	char label;			//soll bei Ausdrucken des Plans abgebildet werden
 	map<Material*, int> zusammensetzung;

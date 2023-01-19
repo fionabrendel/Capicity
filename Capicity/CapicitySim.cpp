@@ -52,6 +52,12 @@ CapicitySim::CapicitySim(int bbreite, int bhoehe) {
 }
 
 //Methoden
+
+//berechnet den Gesamtpreis aller aktuellen Gebäude
+int CapicitySim::calcGesamtpreis() {
+    return 0;
+}
+
 //prüft beim Bau eines Gebäudes auf Kollisionen mit andern, bzw ob außerhalb des Bereichs
 bool CapicitySim::checkKollision(int posx, int posy, int breite, int hoehe) {
 	//außerhalb des Bereichs?
@@ -165,17 +171,17 @@ void CapicitySim::printPlan() {
     //Wasserkraftwerk:
     Wasserkraftwerk w1;
     cout << "Wasserkraftwerk: " << endl;
-    cout << "W: 100, Holz Holz Metall" << endl;
+    cout << w1.getLabel() << w1.getGrundpreis()<< "$ Zusammensetzung: "<< w1.getZusammensetzung() << endl;
     //Windkraftwerk
     Windkraftwerk w2;
     cout << "Windkraftwerk: " << endl;
-    cout << "L: 70, Kunststoff, Kunststoff, Metall" << endl;
+    cout << w2.getLabel() << w2.getGrundpreis() << "$ Zusammensetzung: " << w2.getZusammensetzung()<< endl;
     //Solarpanele
     Solarpanele s3;
     cout << "Solarpanele: " << endl;
-    cout << "S: 80, Kunststoff, Metall" << endl;;
+    cout << s3.getLabel() << s3.getGrundpreis() << "$ Zusammensetzung: " << s3.getZusammensetzung() << endl;;
     //Gesamtpreis aller Gebäude
-    cout << "Gesamtpreis aller Gebäude: 250" << endl;
+    cout << "Gesamtpreis aller Gebauude: " << calcGesamtpreis() << endl;
 }
 
 //beendet das Programm

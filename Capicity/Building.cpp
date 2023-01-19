@@ -10,10 +10,11 @@ using namespace std;
 Building::Building() {
 	//Default: besteht nur aus 1 Holz und Label
 	label = 'B';
-	//zusammensetzung[Holz()] = 3;
-	//zusammensetzung[Metall()] = 0;
-	//zusammensetzung[Kunststoff()] = 0;
+	zusammensetzung.insert({ new Holz(), 1 });
+	zusammensetzung.insert({ new Metall(), 0 });
+	zusammensetzung.insert({ new Kunststoff(), 0 });
 	grundpreis = 30;
+	leistung = 10;
 }
 
 char Building::getLabel() {
@@ -21,11 +22,22 @@ char Building::getLabel() {
 }
 
 string Building::getZusammensetzung() {
-	return "";
+	string temp = "";
+	for (auto& m : zusammensetzung) {
+		temp += m.first->toString() + ": ";
+		temp += m.second;
+	}
+	return temp;
 }
 
 int Building::getGrundpreis() {
-	return grundpreis;
+	int gesamtpreis = grundpreis;
+	for (auto& m : zusammensetzung) {
+		for (int i = 0; i < m.second; i++) {
+			gesamtpreis += m.first->getPreis();
+		}
+	}
+	return gesamtpreis;
 }
 
 //class Leer:
@@ -35,6 +47,7 @@ Leer::Leer() {
 	zusammensetzung.insert({ new Holz(), 0 });
 	zusammensetzung.insert({ new Metall(), 0 });
 	zusammensetzung.insert({ new Kunststoff(), 0 });
+	leistung = 0;
 }
 
 //class Wasserkraftwerk:
@@ -44,6 +57,7 @@ Wasserkraftwerk::Wasserkraftwerk() {
 	zusammensetzung.insert({ new Holz(), 2 });
 	zusammensetzung.insert({ new Metall(), 1 });
 	zusammensetzung.insert({ new Kunststoff(), 0 });
+	leistung = 20;
 }
 
 //class Windkraftwerk:
@@ -53,6 +67,7 @@ Windkraftwerk::Windkraftwerk() {
 	zusammensetzung.insert({ new Holz(), 0 });
 	zusammensetzung.insert({ new Metall(), 1 });
 	zusammensetzung.insert({ new Kunststoff(), 2 });
+	leistung = 30;
 }
 
 //class Solarpanele:
@@ -62,4 +77,5 @@ Solarpanele::Solarpanele() {
 	zusammensetzung.insert({ new Holz(), 0 });
 	zusammensetzung.insert({ new Metall(), 1 });
 	zusammensetzung.insert({ new Kunststoff(), 1 });
+	leistung = 40;
 }

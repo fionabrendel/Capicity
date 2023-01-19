@@ -30,6 +30,7 @@ namespace Sim {
 
 	private:
 		Building ***bereich;
+		int calcGesamtpreis();
 	};
 }
 

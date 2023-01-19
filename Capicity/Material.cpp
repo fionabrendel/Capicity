@@ -7,3 +7,7 @@ Material::Material() {
 int Material::getPreis() {
 	return preis;
 }
+
+string Material::toString() {
+	return "Material";
+}

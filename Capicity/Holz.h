@@ -4,5 +4,6 @@ class Holz : public Material
 {
 public:
 	Holz();
+	string toString();
 };
 

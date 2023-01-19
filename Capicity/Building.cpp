@@ -5,6 +5,7 @@
 #include "Metall.h"
 #include <map>
 #include <string>
+#include <iostream>
 using namespace std;
 
 Building::Building() {
@@ -25,7 +26,7 @@ string Building::getZusammensetzung() {
 	string temp = "";
 	for (auto& m : zusammensetzung) {
 		temp += m.first->toString() + ": ";
-		temp += m.second;
+		temp += std::to_string(m.second);
 	}
 	return temp;
 }

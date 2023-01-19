@@ -2,6 +2,7 @@
 
 Holz::Holz() {
 	preis = 23;
+	classname = "Holz";
 }
 
 string Holz::toString() {

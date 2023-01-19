@@ -9,4 +9,5 @@ class Material
 		Material();
 		int getPreis();
 		string toString();
+		string classname;
 };

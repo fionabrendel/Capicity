@@ -2,6 +2,7 @@
 
 Metall::Metall() {
 	preis = 34;
+	classname = "Metall";
 }
 
 string Metall::toString() {

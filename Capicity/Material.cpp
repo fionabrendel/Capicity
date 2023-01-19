@@ -9,5 +9,5 @@ int Material::getPreis() {
 }
 
 string Material::toString() {
-	return "Material";
+	return classname;
 }

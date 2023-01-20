@@ -152,7 +152,7 @@ void Blueprint::placeBuilding() {
               break;
         case 3: for (int i = posy; i < posy + hoehe; i++) {
             for (int j = posx; j < posx + breite; j++) {
-                bereich[i][j] = new Wasserkraftwerk();
+                bereich[i][j] = new Solarpanele();
             }
         }
               cout << "Gebaeude wurde platziert" << endl;
@@ -189,7 +189,7 @@ void Blueprint::deleteArea() {
                 bereich[i][j] = new Leer();
             }
         }
-        cout << "Bereich wurde gelöscht" << endl;
+        cout << "Bereich wurde geloescht" << endl;
     }
     else {
         cout << "Position außerhalb des Bereichs" << endl;
@@ -199,9 +199,9 @@ void Blueprint::deleteArea() {
 //gibt den Bauplan und weitere Informationen aus
 void Blueprint::printPlan() {
     //Plan ausgeben
-    for (int i = 0; i < bbreite; i++)
+    for (int i = 0; i < bhoehe; i++)
     {
-        for (int j = 0; j < bhoehe; j++)
+        for (int j = 0; j < bbreite; j++)
         {
             cout << bereich[i][j]->getLabel() << " ";
         }
@@ -233,16 +233,16 @@ int Blueprint::calcKennzahl() {
     /*cout << to_string(countWasser) << endl;
     cout << to_string(w1->getGesamtpreis()) << endl;
     cout << to_string(w1->leistung) << endl;*/
-    if (countWasser != 0) {
+    if (countWasser > 0) {
         kennzahl += w1->leistung / (w1->getGesamtpreis() * countWasser);
         cout << to_string(kennzahl) << endl;
     }
     //Windkraftwerk
-    if (countWind != 0) {
+    if (countWind > 0) {
         kennzahl += w2->leistung / (w2->getGesamtpreis() * countWind);
     }
     //Solarpanele
-    if (countSolar != 0) {
+    if (countSolar > 0) {
         kennzahl += s1->leistung / (s1->getGesamtpreis() * countSolar);
     }
     return kennzahl;

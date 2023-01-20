@@ -55,7 +55,7 @@ Wasserkraftwerk::Wasserkraftwerk() {
 	zusammensetzung.insert({ new Holz(), 2 });
 	zusammensetzung.insert({ new Metall(), 1 });
 	zusammensetzung.insert({ new Kunststoff(), 0 });
-	leistung = 20;
+	leistung = 5873;
 }
 
 //class Windkraftwerk:
@@ -65,7 +65,7 @@ Windkraftwerk::Windkraftwerk() {
 	zusammensetzung.insert({ new Holz(), 0 });
 	zusammensetzung.insert({ new Metall(), 1 });
 	zusammensetzung.insert({ new Kunststoff(), 2 });
-	leistung = 30;
+	leistung = 7560;
 }
 
 //class Solarpanele:
@@ -75,5 +75,5 @@ Solarpanele::Solarpanele() {
 	zusammensetzung.insert({ new Holz(), 0 });
 	zusammensetzung.insert({ new Metall(), 1 });
 	zusammensetzung.insert({ new Kunststoff(), 1 });
-	leistung = 40;
+	leistung = 3001;
 }

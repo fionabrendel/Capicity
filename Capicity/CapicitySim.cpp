@@ -44,6 +44,7 @@ void CapicitySim::createPlan() {
     cout << "Hoehe des Plans: " << endl;
     cin >> bhoehe;
     plans.push_back(new Blueprint(bbreite, bhoehe));
+    cout << "Neuer Plan erstellt" << endl;
 }
 
 //sortiert die Pläne nach den Kennzahlen
@@ -66,6 +67,8 @@ void CapicitySim::printAllPlans() {
 //überprüft, ob der aktuelle Plan einem alten Plan gleicht
 //true, wenn ein gleicher gefunden wurde
 bool CapicitySim::checkEquality() {
+    if (plans.size() < 2)
+        return false;
     for (int i = 0; i < plans.size(); i++) {
         if (plans.back() == plans.at(i)) { //back ist der aktuelle
             return true;

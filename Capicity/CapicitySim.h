@@ -8,12 +8,7 @@ namespace Sim {
 		//Variablen
 		bool running;
 		int input;
-		int bbreite;
-		int bhoehe;
-		int posx;
-		int posy;
-		int breite;
-		int hoehe;
+		
 
 		//Konstruktor:
 		CapicitySim();

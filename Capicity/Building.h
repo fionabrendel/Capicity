@@ -24,7 +24,7 @@ public:
 	//Methoden
 	char getLabel();
 	virtual string getZusammensetzung();
-	int getGrundpreis();
+	int getGesamtpreis();
 };
 
 //abgeleitete Gebäude

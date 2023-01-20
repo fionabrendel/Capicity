@@ -6,6 +6,7 @@ using namespace Sim;
 
 //Konstruktor
 CapicitySim::CapicitySim() {
+    gesamtpreis = 0;
     bbreite = 10;
     bhoehe = 10;
     running = true;
@@ -55,7 +56,28 @@ CapicitySim::CapicitySim(int bbreite, int bhoehe) {
 
 //berechnet den Gesamtpreis aller aktuellen Gebäude
 int CapicitySim::calcGesamtpreis() {
-    return 0;
+    int countWasser = 0;
+    int countWind = 0;
+    int countSolar = 0;
+    Wasserkraftwerk w1;
+    Windkraftwerk w2;
+    Solarpanele s1;
+    gesamtpreis = 0;
+    for (int i = 0; i < bhoehe; i++) {
+        for (int j = 0; i < bbreite; j++) {
+            if (bereich[i][j]->getLabel() == 'W') {
+                countWasser++;
+            }
+            if (bereich[i][j]->getLabel() == 'L') {
+                countWind++;
+            }
+            if (bereich[i][j]->getLabel() == 'S') {
+                countSolar++;
+            }
+        }
+    }
+    gesamtpreis = countWasser * w1.getGesamtpreis() + countWind * w2.getGesamtpreis() + countSolar*s1.getGesamtpreis();
+    return gesamtpreis;
 }
 
 //prüft beim Bau eines Gebäudes auf Kollisionen mit andern, bzw ob außerhalb des Bereichs
@@ -171,17 +193,17 @@ void CapicitySim::printPlan() {
     //Wasserkraftwerk:
     Wasserkraftwerk w1;
     cout << "Wasserkraftwerk: " << endl;
-    cout << w1.getLabel() << w1.getGrundpreis()<< "$ Zusammensetzung: "<< w1.getZusammensetzung() << endl;
+    cout << w1.getLabel() << w1.getGesamtpreis()<< "$ Zusammensetzung: "<< w1.getZusammensetzung() << endl;
     //Windkraftwerk
     Windkraftwerk w2;
     cout << "Windkraftwerk: " << endl;
-    cout << w2.getLabel() << w2.getGrundpreis() << "$ Zusammensetzung: " << w2.getZusammensetzung()<< endl;
+    cout << w2.getLabel() << w2.getGesamtpreis() << "$ Zusammensetzung: " << w2.getZusammensetzung()<< endl;
     //Solarpanele
     Solarpanele s3;
     cout << "Solarpanele: " << endl;
-    cout << s3.getLabel() << s3.getGrundpreis() << "$ Zusammensetzung: " << s3.getZusammensetzung() << endl;;
+    cout << s3.getLabel() << s3.getGesamtpreis() << "$ Zusammensetzung: " << s3.getZusammensetzung() << endl;;
     //Gesamtpreis aller Gebäude
-    cout << "Gesamtpreis aller Gebauude: " << calcGesamtpreis() << endl;
+    //cout << "Gesamtpreis aller Gebaeude: " << to_string(calcGesamtpreis()) << endl;
 }
 
 //beendet das Programm

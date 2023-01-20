@@ -11,9 +11,6 @@ using namespace std;
 Building::Building() {
 	//Default: besteht nur aus 1 Holz und Label
 	label = 'B';
-	zusammensetzung.insert({ new Holz(), 1 });
-	zusammensetzung.insert({ new Metall(), 0 });
-	zusammensetzung.insert({ new Kunststoff(), 0 });
 	grundpreis = 30;
 	leistung = 10;
 }
@@ -26,12 +23,12 @@ string Building::getZusammensetzung() {
 	string temp = "";
 	for (auto& m : zusammensetzung) {
 		temp += m.first->toString() + ": ";
-		temp += std::to_string(m.second);
+		temp += to_string(m.second);
 	}
 	return temp;
 }
 
-int Building::getGrundpreis() {
+int Building::getGesamtpreis() {
 	int gesamtpreis = grundpreis;
 	for (auto& m : zusammensetzung) {
 		for (int i = 0; i < m.second; i++) {
@@ -45,7 +42,7 @@ int Building::getGrundpreis() {
 Leer::Leer() {
 	grundpreis = 0;
 	label = 'O';
-	zusammensetzung.insert({ new Holz(), 0 });
+	zusammensetzung[new Holz()] = 0;// ({ new Holz(), 0 });
 	zusammensetzung.insert({ new Metall(), 0 });
 	zusammensetzung.insert({ new Kunststoff(), 0 });
 	leistung = 0;
@@ -55,7 +52,7 @@ Leer::Leer() {
 Wasserkraftwerk::Wasserkraftwerk() {
 	grundpreis = 100;
 	label = 'W';
-	zusammensetzung.insert({ new Holz(), 2 });
+	zusammensetzung[new Holz()] = 2; // .insert({ new Holz(), 2 });
 	zusammensetzung.insert({ new Metall(), 1 });
 	zusammensetzung.insert({ new Kunststoff(), 0 });
 	leistung = 20;

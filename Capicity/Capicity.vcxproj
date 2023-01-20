@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Blueprint.cpp" />
     <ClCompile Include="Building.cpp" />
     <ClCompile Include="CapicitySim.cpp" />
     <ClCompile Include="Holz.cpp" />
@@ -136,6 +137,7 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Blueprint.h" />
     <ClInclude Include="Building.h" />
     <ClInclude Include="CapicitySim.h" />
     <ClInclude Include="Holz.h" />

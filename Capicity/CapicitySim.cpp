@@ -45,6 +45,20 @@ void CapicitySim::createPlan() {
     plans.push_back(new Blueprint(bbreite, bhoehe));
 }
 
+//sortiert die Pläne nach den Kennzahlen
+void CapicitySim::sortPlans() {
+
+}
+
+//alle Pläne ausgeben
+void CapicitySim::printAllPlans() {
+    sortPlans();
+    for (int i = 0; i < plans.size(); i++) {
+        cout << "*****************************" << endl;
+        plans.at(i)->printPlan();
+    }
+}
+
 //zeigt ein Menü an, mit dem die Funktionen aufgerufen werden können
 void CapicitySim::showMenu() {
     cout << "-----------------------" << endl;
@@ -68,8 +82,7 @@ void CapicitySim::showMenu() {
         plans.back()->printPlan();
         break;
     case 4:
-        //print all plans--> Vektor durchlaufen
-        //sortieren nach Kennzahlen mit Lambda Ausdruck
+        printAllPlans();
         break;
     case 5:
         

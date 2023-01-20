@@ -22,6 +22,8 @@ namespace Sim {
 		void stop();
 		void showMenu();
 		void createPlan();
+		void sortPlans();
+		void printAllPlans();
 	};
 }
 

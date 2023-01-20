@@ -230,8 +230,12 @@ int Blueprint::calcKennzahl() {
     calcGebaeude();
     kennzahl = 0;
     //Wasserkraftwerk
+    /*cout << to_string(countWasser) << endl;
+    cout << to_string(w1->getGesamtpreis()) << endl;
+    cout << to_string(w1->leistung) << endl;*/
     if (countWasser != 0) {
         kennzahl += w1->leistung / (w1->getGesamtpreis() * countWasser);
+        cout << to_string(kennzahl) << endl;
     }
     //Windkraftwerk
     if (countWind != 0) {

@@ -25,6 +25,9 @@ public:
 	Blueprint();
 	Blueprint(int bbreite, int bhoehe);
 
+	//Funktor:
+	bool operator ==(Blueprint b);
+
 	//Methoden:
 	bool checkKollision(int posx, int posy, int breite, int hoehe);
 	void placeBuilding();

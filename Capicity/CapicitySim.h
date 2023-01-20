@@ -16,16 +16,8 @@ namespace Sim {
 
 
 		//Methoden
-		bool checkKollision(int posx, int posy, int breite, int hoehe);
-		void placeBuilding();
-		void deleteArea();
-		void printPlan();
 		void stop();
 		void showMenu();
-
-	private:
-		Building ***bereich;
-		int calcGesamtpreis();
 	};
 }
 

@@ -69,18 +69,20 @@ void CapicitySim::showMenu() {
         break;
     case 4:
         //print all plans--> Vektor durchlaufen
+        //sortieren nach Kennzahlen mit Lambda Ausdruck
         break;
     case 5:
-        //alten auf Gleichheit prüfen
-        bool create = true;
+        
+        //aktuellen auf Gleichheit prüfen
         if (plans.back()->checkIdentity()) {
             //wenn gleicher existiert delete
-            create = false;
+            cout << "Aktueller Plan gleicht einem alten. Keine Speicherung möglich" << endl;
+            cout << "Neuer Plan wird erstellt" << endl;
         }
-        if (create) {
-            createPlan();
-            
+        else{
+            cout << "Alter Plan wird gespeichert und neuer erstellt" << endl;
         }
+        createPlan();
         break;
     case 6:
         stop();

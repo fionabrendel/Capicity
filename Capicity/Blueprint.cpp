@@ -8,6 +8,20 @@ Blueprint::Blueprint() {
     gesamtpreis = 0;
     bbreite = 10;
     bhoehe = 10;
+    posx = 0;
+    posy = 0;
+    breite = 0;
+    hoehe = 0;
+    countWasser = 0;
+    countWind = 0;
+    countSolar = 0;
+    kennzahl = 0;
+
+    //Gebäudeobjekte zum Werte auslesen
+    w1 = new Wasserkraftwerk();
+    w2 = new Windkraftwerk();
+    s1 = new Solarpanele();
+
     bereich = new Building * *[bhoehe];
     for (int i = 0; i < bhoehe; i++)
     {
@@ -23,8 +37,24 @@ Blueprint::Blueprint() {
 
 //Konstruktor
 Blueprint::Blueprint(int bbreite, int bhoehe) {
+    input = 0;
+    gesamtpreis = 0;
     this->bbreite = bbreite;
     this->bhoehe = bhoehe;
+    posx = 0;
+    posy = 0;
+    breite = 0;
+    hoehe = 0;
+    countWasser = 0;
+    countWind = 0;
+    countSolar = 0;
+    kennzahl = 0;
+
+    //Gebäudeobjekte zum Werte auslesen
+    w1 = new Wasserkraftwerk();
+    w2 = new Windkraftwerk();
+    s1 = new Solarpanele();
+
     bereich = new Building * *[bhoehe];
     for (int i = 0; i < bhoehe; i++)
     {
@@ -46,7 +76,7 @@ void Blueprint::calcGebaeude() {
     int countWind = 0;
     int countSolar = 0;
     for (int i = 0; i < bhoehe; i++) {
-        for (int j = 0; i < bbreite; j++) {
+        for (int j = 0; j < bbreite; j++) {
             if (bereich[i][j]->getLabel() == 'W') {
                 countWasser++;
             }
@@ -58,16 +88,14 @@ void Blueprint::calcGebaeude() {
             }
         }
     }
+    //cout << "Wasser: " << std::to_string(countWasser)<<endl;
 }
 
 //berechnet den Gesamtpreis aller aktuellen Gebäude
 int Blueprint::calcGesamtpreis() {
-    Wasserkraftwerk w1;
-    Windkraftwerk w2;
-    Solarpanele s1;
     gesamtpreis = 0;
     calcGebaeude();
-    gesamtpreis = countWasser * w1.getGesamtpreis() + countWind * w2.getGesamtpreis() + countSolar * s1.getGesamtpreis();
+    gesamtpreis = countWasser * w1->getGesamtpreis() + countWind * w2->getGesamtpreis() + countSolar * s1->getGesamtpreis();
     return gesamtpreis;
 }
 
@@ -182,40 +210,34 @@ void Blueprint::printPlan() {
 
     //Auflistung Gebäude + Zusammensetzung + Grundpreis
     //Wasserkraftwerk:
-    Wasserkraftwerk w1;
     cout << "Wasserkraftwerk: " << endl;
-    cout << w1.getLabel() << w1.getGesamtpreis() << "$ Zusammensetzung: " << w1.getZusammensetzung() << endl;
+    cout << w1->getLabel() << w1->getGesamtpreis() << "$ Zusammensetzung: " << w1->getZusammensetzung() << endl;
     //Windkraftwerk
-    Windkraftwerk w2;
     cout << "Windkraftwerk: " << endl;
-    cout << w2.getLabel() << w2.getGesamtpreis() << "$ Zusammensetzung: " << w2.getZusammensetzung() << endl;
+    cout << w2->getLabel() << w2->getGesamtpreis() << "$ Zusammensetzung: " << w2->getZusammensetzung() << endl;
     //Solarpanele
-    Solarpanele s3;
     cout << "Solarpanele: " << endl;
-    cout << s3.getLabel() << s3.getGesamtpreis() << "$ Zusammensetzung: " << s3.getZusammensetzung() << endl;;
+    cout << s1->getLabel() << s1->getGesamtpreis() << "$ Zusammensetzung: " << s1->getZusammensetzung() << endl;;
     //Gesamtpreis aller Gebäude
-    //cout << "Gesamtpreis aller Gebaeude: " << to_string(calcGesamtpreis()) << endl;
+    cout << "Gesamtpreis aller Gebaeude: " << to_string(calcGesamtpreis()) << endl;
 }
 
 
 //berechnet die Kennzahl des Plans
 int Blueprint::calcKennzahl() {
-    Wasserkraftwerk w1;
-    Windkraftwerk w2;
-    Solarpanele s1;
     calcGebaeude();
     kennzahl = 0;
     //Wasserkraftwerk
-    kennzahl += w1.leistung / (w1.getGesamtpreis() * countWasser);
+    kennzahl += w1->leistung / (w1->getGesamtpreis() * countWasser);
     //Windkraftwerk
-    kennzahl += w2.leistung / (w2.getGesamtpreis() * countWind);
+    kennzahl += w2->leistung / (w2->getGesamtpreis() * countWind);
     //Solarpanele
-    kennzahl += s1.leistung / (s1.getGesamtpreis() * countSolar);
+    kennzahl += s1->leistung / (s1->getGesamtpreis() * countSolar);
     return kennzahl;
 }
 
 //prüft, ob der aktuelle Plan identisch zu einem bisherigen ist
 bool Blueprint::checkIdentity() {
     //auf gleichheit checken
-    return true;
+    return false;
 }

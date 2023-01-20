@@ -17,6 +17,9 @@ public:
 	int countWasser;
 	int countWind;
 	int countSolar;
+	Wasserkraftwerk* w1;
+	Windkraftwerk* w2;
+	Solarpanele* s1;
 
 	//Konstruktor:
 	Blueprint();

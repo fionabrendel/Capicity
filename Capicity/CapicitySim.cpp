@@ -69,11 +69,12 @@ void CapicitySim::printAllPlans() {
 bool CapicitySim::checkEquality() {
     if (plans.size() < 2)
         return false;
-    for (int i = 0; i < plans.size(); i++) {
+    for (int i = 0; i < plans.size()-1; i++) { //size-1 sonst wird der aktuelle mit sich selbst verglichen
         if (plans.back() == plans.at(i)) { //back ist der aktuelle
             return true;
         }
     }
+    return false;
 }
 
 //zeigt ein Menü an, mit dem die Funktionen aufgerufen werden können

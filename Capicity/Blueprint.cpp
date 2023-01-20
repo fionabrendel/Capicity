@@ -102,7 +102,7 @@ int Blueprint::calcGesamtpreis() {
 //prüft beim Bau eines Gebäudes auf Kollisionen mit andern, bzw ob außerhalb des Bereichs
 bool Blueprint::checkKollision(int posx, int posy, int breite, int hoehe) {
     //außerhalb des Bereichs?
-    if (posy >= bhoehe || posx >= bbreite || hoehe + posy >= bhoehe || breite + posx >= bbreite) {
+    if (posy >= bhoehe || posx >= bbreite || hoehe + posy > bhoehe || breite + posx > bbreite) {
         return false;
     }
     //Kollision mit anderem Gebäude?
@@ -235,7 +235,7 @@ int Blueprint::calcKennzahl() {
     cout << to_string(w1->leistung) << endl;*/
     if (countWasser > 0) {
         kennzahl += w1->leistung / (w1->getGesamtpreis() * countWasser);
-        cout << to_string(kennzahl) << endl;
+        //cout << to_string(kennzahl) << endl;
     }
     //Windkraftwerk
     if (countWind > 0) {
@@ -249,12 +249,13 @@ int Blueprint::calcKennzahl() {
 }
 
 //definiert den Gleichheitsoperator für Blueprint-Pläne
+//false, wenn die Pläne ungleich sind
 bool Blueprint::operator ==(Blueprint b) {
     if (this->bbreite != b.bbreite || this->bhoehe != b.bhoehe) {
         return false;
     }
     for (int i = 0; i < this->bhoehe; i++) {
-        for (int j = 0; j < this->bhoehe; j++) {
+        for (int j = 0; j < this->bbreite; j++) {
             if (this->bereich[i][j]->getLabel() != b.bereich[i][j]->getLabel()) {
                 return false;
             }

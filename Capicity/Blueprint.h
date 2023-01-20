@@ -13,6 +13,10 @@ public:
 	int hoehe;
 	int gesamtpreis;
 	int input;
+	int kennzahl;
+	int countWasser;
+	int countWind;
+	int countSolar;
 
 	//Konstruktor:
 	Blueprint();
@@ -23,6 +27,9 @@ public:
 	void placeBuilding();
 	void deleteArea();
 	void printPlan();
+	int calcKennzahl();
+	void calcGebaeude();
+	bool checkIdentity();
 
 private:
 	Building*** bereich;

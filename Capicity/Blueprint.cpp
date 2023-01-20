@@ -39,15 +39,12 @@ Blueprint::Blueprint(int bbreite, int bhoehe) {
 }
 
 //Methoden
-//berechnet den Gesamtpreis aller aktuellen Gebäude
-int Blueprint::calcGesamtpreis() {
+
+//berechnet Anzahl der Gebäude auf dem Plan
+void Blueprint::calcGebaeude() {
     int countWasser = 0;
     int countWind = 0;
     int countSolar = 0;
-    Wasserkraftwerk w1;
-    Windkraftwerk w2;
-    Solarpanele s1;
-    gesamtpreis = 0;
     for (int i = 0; i < bhoehe; i++) {
         for (int j = 0; i < bbreite; j++) {
             if (bereich[i][j]->getLabel() == 'W') {
@@ -61,6 +58,15 @@ int Blueprint::calcGesamtpreis() {
             }
         }
     }
+}
+
+//berechnet den Gesamtpreis aller aktuellen Gebäude
+int Blueprint::calcGesamtpreis() {
+    Wasserkraftwerk w1;
+    Windkraftwerk w2;
+    Solarpanele s1;
+    gesamtpreis = 0;
+    calcGebaeude();
     gesamtpreis = countWasser * w1.getGesamtpreis() + countWind * w2.getGesamtpreis() + countSolar * s1.getGesamtpreis();
     return gesamtpreis;
 }
@@ -189,4 +195,27 @@ void Blueprint::printPlan() {
     cout << s3.getLabel() << s3.getGesamtpreis() << "$ Zusammensetzung: " << s3.getZusammensetzung() << endl;;
     //Gesamtpreis aller Gebäude
     //cout << "Gesamtpreis aller Gebaeude: " << to_string(calcGesamtpreis()) << endl;
+}
+
+
+//berechnet die Kennzahl des Plans
+int Blueprint::calcKennzahl() {
+    Wasserkraftwerk w1;
+    Windkraftwerk w2;
+    Solarpanele s1;
+    calcGebaeude();
+    kennzahl = 0;
+    //Wasserkraftwerk
+    kennzahl += w1.leistung / (w1.getGesamtpreis() * countWasser);
+    //Windkraftwerk
+    kennzahl += w2.leistung / (w2.getGesamtpreis() * countWind);
+    //Solarpanele
+    kennzahl += s1.leistung / (s1.getGesamtpreis() * countSolar);
+    return kennzahl;
+}
+
+//prüft, ob der aktuelle Plan identisch zu einem bisherigen ist
+bool Blueprint::checkIdentity() {
+    //auf gleichheit checken
+    return true;
 }

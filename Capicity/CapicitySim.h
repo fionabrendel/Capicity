@@ -1,5 +1,7 @@
 #pragma once
 #include "Building.h"
+#include "Blueprint.h"
+#include <vector>
 
 namespace Sim {
 	class CapicitySim
@@ -8,6 +10,7 @@ namespace Sim {
 		//Variablen
 		bool running;
 		int input;
+		vector<Blueprint*> plans;
 		
 
 		//Konstruktor:
@@ -18,6 +21,7 @@ namespace Sim {
 		//Methoden
 		void stop();
 		void showMenu();
+		void createPlan();
 	};
 }
 

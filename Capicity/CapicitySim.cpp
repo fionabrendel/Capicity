@@ -1,6 +1,7 @@
 #include "CapicitySim.h"
 #include "Building.h"
 #include "Blueprint.h"
+#include <algorithm>
 #include <vector>
 #include <iostream>
 using namespace std;
@@ -47,7 +48,9 @@ void CapicitySim::createPlan() {
 
 //sortiert die Pläne nach den Kennzahlen
 void CapicitySim::sortPlans() {
+    auto sortBlueprintLambda = [](Blueprint b1, Blueprint b2) {return (b1.calcKennzahl() > b2.calcKennzahl()); };
 
+    sort(plans.begin(), plans.end(), sortBlueprintLambda);
 }
 
 //alle Pläne ausgeben
@@ -56,6 +59,7 @@ void CapicitySim::printAllPlans() {
     for (int i = 0; i < plans.size(); i++) {
         cout << "*****************************" << endl;
         plans.at(i)->printPlan();
+        cout << "*****************************" << endl;
     }
 }
 
@@ -89,6 +93,7 @@ void CapicitySim::showMenu() {
         //aktuellen auf Gleichheit prüfen
         if (plans.back()->checkIdentity()) {
             //wenn gleicher existiert delete
+            plans.pop_back();
             cout << "Aktueller Plan gleicht einem alten. Keine Speicherung möglich" << endl;
             cout << "Neuer Plan wird erstellt" << endl;
         }

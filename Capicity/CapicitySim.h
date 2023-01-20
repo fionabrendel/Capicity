@@ -24,6 +24,7 @@ namespace Sim {
 		void createPlan();
 		void sortPlans();
 		void printAllPlans();
+		bool checkEquality();
 	};
 }
 

@@ -248,8 +248,16 @@ int Blueprint::calcKennzahl() {
     return kennzahl;
 }
 
-//prüft, ob der aktuelle Plan identisch zu einem bisherigen ist
-bool Blueprint::checkIdentity() {
-    //auf gleichheit checken
-    return false;
+//definiert den Gleichheitsoperator für Blueprint-Pläne
+bool Blueprint::operator ==(Blueprint b) {
+    if (this->bbreite != b.bbreite || this->bhoehe != b.bhoehe) {
+        return false;
+    }
+    for (int i = 0; i < this->bhoehe; i++) {
+        for (int j = 0; j < this->bhoehe; j++) {
+            if (this->bereich[i][j]->getLabel() != b.bereich[i][j]->getLabel()) {
+                return false;
+            }
+        }
+    }
 }

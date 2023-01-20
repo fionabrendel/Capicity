@@ -48,7 +48,7 @@ void CapicitySim::createPlan() {
 
 //sortiert die Pläne nach den Kennzahlen
 void CapicitySim::sortPlans() {
-    auto sortBlueprintLambda = [](Blueprint b1, Blueprint b2) {return (b1.calcKennzahl() > b2.calcKennzahl()); };
+    auto sortBlueprintLambda = [](Blueprint* b1, Blueprint* b2) {return (b1->calcKennzahl() > b2->calcKennzahl()); };
 
     sort(plans.begin(), plans.end(), sortBlueprintLambda);
 }
@@ -63,14 +63,24 @@ void CapicitySim::printAllPlans() {
     }
 }
 
+//überprüft, ob der aktuelle Plan einem alten Plan gleicht
+//true, wenn ein gleicher gefunden wurde
+bool CapicitySim::checkEquality() {
+    for (int i = 0; i < plans.size(); i++) {
+        if (plans.back() == plans.at(i)) { //back ist der aktuelle
+            return true;
+        }
+    }
+}
+
 //zeigt ein Menü an, mit dem die Funktionen aufgerufen werden können
 void CapicitySim::showMenu() {
     cout << "-----------------------" << endl;
     cout << "Waehle eine Aktion:" << endl;
     cout << "1: Gebaeude setzen im aktuellen Plan" << endl;
     cout << "2: Bereich loeschen im aktuellen Plan" << endl;
-    cout << "3: Bauplan ausgeben" << endl;
-    cout << "4: Alle Pläne ausgeben" << endl;
+    cout << "3: Aktuellen Bauplan ausgeben" << endl;
+    cout << "4: Alle Plaene ausgeben" << endl;
     cout << "5: Neuen Bauplan erstellen und aktuellen abspeichern" << endl;
     cout << "6: Programm beenden" << endl;
     cin >> input;
@@ -91,7 +101,7 @@ void CapicitySim::showMenu() {
     case 5:
         
         //aktuellen auf Gleichheit prüfen
-        if (plans.back()->checkIdentity()) {
+        if (checkEquality()) {
             //wenn gleicher existiert delete
             plans.pop_back();
             cout << "Aktueller Plan gleicht einem alten. Keine Speicherung möglich" << endl;

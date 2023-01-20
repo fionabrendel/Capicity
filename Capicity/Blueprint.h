@@ -35,7 +35,6 @@ public:
 	void printPlan();
 	int calcKennzahl();
 	void calcGebaeude();
-	bool checkIdentity();
 
 private:
 	Building*** bereich;

@@ -72,9 +72,9 @@ Blueprint::Blueprint(int bbreite, int bhoehe) {
 
 //berechnet Anzahl der Gebäude auf dem Plan
 void Blueprint::calcGebaeude() {
-    int countWasser = 0;
-    int countWind = 0;
-    int countSolar = 0;
+    countWasser = 0;
+    countWind = 0;
+    countSolar = 0;
     for (int i = 0; i < bhoehe; i++) {
         for (int j = 0; j < bbreite; j++) {
             if (bereich[i][j]->getLabel() == 'W') {
@@ -220,6 +220,8 @@ void Blueprint::printPlan() {
     cout << s1->getLabel() << s1->getGesamtpreis() << "$ Zusammensetzung: " << s1->getZusammensetzung() << endl;;
     //Gesamtpreis aller Gebäude
     cout << "Gesamtpreis aller Gebaeude: " << to_string(calcGesamtpreis()) << endl;
+    //Kennzahl des Plans
+    cout << "Kennzahl: " << to_string(calcKennzahl()) << endl;
 }
 
 
@@ -228,11 +230,17 @@ int Blueprint::calcKennzahl() {
     calcGebaeude();
     kennzahl = 0;
     //Wasserkraftwerk
-    kennzahl += w1->leistung / (w1->getGesamtpreis() * countWasser);
+    if (countWasser != 0) {
+        kennzahl += w1->leistung / (w1->getGesamtpreis() * countWasser);
+    }
     //Windkraftwerk
-    kennzahl += w2->leistung / (w2->getGesamtpreis() * countWind);
+    if (countWind != 0) {
+        kennzahl += w2->leistung / (w2->getGesamtpreis() * countWind);
+    }
     //Solarpanele
-    kennzahl += s1->leistung / (s1->getGesamtpreis() * countSolar);
+    if (countSolar != 0) {
+        kennzahl += s1->leistung / (s1->getGesamtpreis() * countSolar);
+    }
     return kennzahl;
 }
 

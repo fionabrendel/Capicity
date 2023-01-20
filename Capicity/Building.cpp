@@ -23,7 +23,7 @@ string Building::getZusammensetzung() {
 	string temp = "";
 	for (auto& m : zusammensetzung) {
 		temp += m.first->toString() + ": ";
-		temp += to_string(m.second);
+		temp += to_string(m.second) + " ,";
 	}
 	return temp;
 }
@@ -52,7 +52,7 @@ Leer::Leer() {
 Wasserkraftwerk::Wasserkraftwerk() {
 	grundpreis = 100;
 	label = 'W';
-	zusammensetzung[new Holz()] = 2; // .insert({ new Holz(), 2 });
+	zusammensetzung.insert({ new Holz(), 2 });
 	zusammensetzung.insert({ new Metall(), 1 });
 	zusammensetzung.insert({ new Kunststoff(), 0 });
 	leistung = 20;
